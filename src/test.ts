@@ -1,15 +1,14 @@
-import { CANCEL_REASON, DISPUTE_REASON } from "./consts/constants";
-import ShopeeOpenAPI from "./index";
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
+import ShopeeOpenAPI from './index';
 dotenv.config();
 
 (async () => {
   try {
     const shopee = ShopeeOpenAPI({
-      host: "https://partner.test-stable.shopeemobile.com",
+      host: 'https://partner.test-stable.shopeemobile.com',
       partner_id: +process.env.PARTNER_ID,
       partner_key: process.env.PARTNER_KEY,
-      redirect: "https://google.com",
+      redirect: 'https://google.com',
     });
 
     // const result = await shopee.getAuthLink();
@@ -25,11 +24,13 @@ dotenv.config();
       shop_id: 22943,
       onGetAccessToken: async () => {
         //get access token from db
-        return "6324e6ea9e6c51f1ea86f2444f657dce";
+        return '6324e6ea9e6c51f1ea86f2444f657dce';
       },
       onRefreshAccessToken: async () => {
         //get refresh token from db
-        const { access_token, refresh_token } = await shopee.refreshAccessToken({ refresh_token: "refresh_token", shop_id: 22943 });
+        const { access_token, refresh_token } = await shopee.refreshAccessToken(
+          { refresh_token: 'refresh_token', shop_id: 22943 }
+        );
         //store new refresh token & access token
         return access_token;
       },
@@ -49,6 +50,6 @@ dotenv.config();
     // console.log(result);
   } catch (error) {
     console.error(error);
-    console.log("error");
+    console.log('error');
   }
 })();
