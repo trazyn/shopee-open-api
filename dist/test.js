@@ -12,16 +12,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const index_1 = __importDefault(require("./index"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const index_1 = __importDefault(require("./index"));
 dotenv_1.default.config();
 (() => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const shopee = index_1.default({
-            host: "https://partner.test-stable.shopeemobile.com",
+        const shopee = (0, index_1.default)({
+            host: 'https://partner.test-stable.shopeemobile.com',
             partner_id: +process.env.PARTNER_ID,
             partner_key: process.env.PARTNER_KEY,
-            redirect: "https://google.com",
+            redirect: 'https://google.com',
         });
         // const result = await shopee.getAuthLink();
         // const result = await shopee.getAccessToken({
@@ -36,11 +36,11 @@ dotenv_1.default.config();
             shop_id: 22943,
             onGetAccessToken: () => __awaiter(void 0, void 0, void 0, function* () {
                 //get access token from db
-                return "6324e6ea9e6c51f1ea86f2444f657dce";
+                return '6324e6ea9e6c51f1ea86f2444f657dce';
             }),
             onRefreshAccessToken: () => __awaiter(void 0, void 0, void 0, function* () {
                 //get refresh token from db
-                const { access_token, refresh_token } = yield shopee.refreshAccessToken({ refresh_token: "refresh_token", shop_id: 22943 });
+                const { access_token, refresh_token } = yield shopee.refreshAccessToken({ refresh_token: 'refresh_token', shop_id: 22943 });
                 //store new refresh token & access token
                 return access_token;
             }),
@@ -57,7 +57,7 @@ dotenv_1.default.config();
     }
     catch (error) {
         console.error(error);
-        console.log("error");
+        console.log('error');
     }
 }))();
 //# sourceMappingURL=test.js.map
